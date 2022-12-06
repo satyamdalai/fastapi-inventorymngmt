@@ -18,6 +18,7 @@ app.add_middleware(
 
 )
 
+# microservices have unique database
 redis = get_redis_connection(
     host=REDIS_HOST,
     port=int(REDIS_PORT),
