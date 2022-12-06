@@ -43,9 +43,10 @@ class Order(HashModel):
 
 
 def order_completed(order: Order):
-    time.sleep(3)
+    time.sleep(5)
     order.status = 'completed'
     order.save()
+    redis.xadd('order_completed', order.dict(), '*')
 
 
 @app.get('/orders/{pk}')
